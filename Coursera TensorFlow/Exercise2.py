@@ -12,7 +12,8 @@ When it reaches 99% or greater it should print out the string "Reached 99% accur
 If you add any additional variables, make sure you use the same names as the ones used in the class
 '''
 import tensorflow as tf
-import numpy as py
+import numpy as np
+import matplotlib.pyplot as plt
 
 class myCallback(tf.keras.callbacks.Callback):
   def on_epoch_end(self, epoch, logs={}):
@@ -37,3 +38,7 @@ model.compile(optimizer='adam',
               metrics=['accuracy'])
 
 model.fit(x_train, y_train, epochs=10, callbacks=[callbacks])
+
+# Para fazer teste vendo a imagem
+plt.imshow(x_test[10])
+print(np.argmax(model.predict(np.array([x_test[10]]))))
